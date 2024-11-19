@@ -3,6 +3,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
@@ -11,13 +12,14 @@ import libWrapper.getRandomCow
 @Composable
 @Preview
 fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
+    val clipboardText = LocalClipboardManager.current.getText()?.text ?: "Can't find it."
+    var displayText by remember { mutableStateOf(clipboardText) }
 
     MaterialTheme {
         Button(onClick = {
-            text = getRandomCow("Hello, Desktop!")
+            displayText = getRandomCow(clipboardText)
         }) {
-            Text(text, fontFamily = FontFamily.Monospace)
+            Text(displayText, fontFamily = FontFamily.Monospace)
         }
     }
 }
