@@ -6,7 +6,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import com.github.ricksbrown.cowsay.plugin.CowExecutor
+import libWrapper.getRandomCow
 
 @Composable
 @Preview
@@ -15,10 +15,7 @@ fun App() {
 
     MaterialTheme {
         Button(onClick = {
-            val executor = CowExecutor()
-            executor.setCowfile("stegosaurus")
-            executor.setMessage("Hello, Desktop!")
-            text = executor.execute()
+            text = getRandomCow("Hello, Desktop!")
         }) {
             Text(text, fontFamily = FontFamily.Monospace)
         }
