@@ -5,7 +5,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import com.github.ricksbrown.cowsay.Cowsay
+import com.github.ricksbrown.cowsay.plugin.CowExecutor
 
 @Composable
 @Preview
@@ -14,7 +14,10 @@ fun App() {
 
     MaterialTheme {
         Button(onClick = {
-            text = Cowsay.say(arrayOf("Hello, Desktop!"))
+            val executor = CowExecutor()
+            executor.setCowfile("stegosaurus")
+            executor.setMessage("Hello, Desktop!")
+            text = executor.execute()
         }) {
             Text(text)
         }
