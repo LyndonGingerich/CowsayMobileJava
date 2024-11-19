@@ -3,6 +3,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.github.ricksbrown.cowsay.plugin.CowExecutor
@@ -19,7 +20,7 @@ fun App() {
             executor.setMessage("Hello, Desktop!")
             text = executor.execute()
         }) {
-            Text(text)
+            Text(text, fontFamily = FontFamily.Monospace)
         }
     }
 }
