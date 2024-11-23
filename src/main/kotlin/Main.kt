@@ -7,7 +7,7 @@ import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import libWrapper.getRandomCow
+import libWrapper.RandomCow
 
 @Composable
 @Preview
@@ -17,7 +17,7 @@ fun App() {
 
     MaterialTheme {
         Button(onClick = {
-            displayText = getRandomCow(clipboardText)
+            displayText = RandomCow.getAny(clipboardText)
         }) {
             Text(displayText, fontFamily = FontFamily.Monospace)
         }
